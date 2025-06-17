@@ -1,0 +1,268 @@
+.dashboard-container {
+  display: flex;
+  height: 600px;
+  width: 1000px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #69c9ef;
+  border-radius: 20px;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #2c2c2c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-radius: 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0 20px;
+  margin-bottom: 30px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+nav li.active,
+nav li:hover {
+  background-color: #0077b6;
+}
+
+.action-buttons {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-money {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #69c9ef;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.payment {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f24309;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  margin-top: auto;
+}
+
+.avatar {
+  background-color: #444;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.user-info .name {
+  font-weight: bold;
+}
+
+.user-info .account-type {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.balance-card {
+  background: linear-gradient(90deg, #0077b6, #00b4d8);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.current-balance {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.account-number {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.transaction-history {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.transaction-scroll {
+  overflow: auto;
+  max-height: 220px;
+}
+
+.transaction-details {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.transaction-status {
+  text-align: right;
+}
+
+.amount {
+  margin-right: 30px;
+}
+
+.amount.negative {
+  color: red;
+}
+
+.amount.positive {
+  color: green;
+}
+
+.status.completed {
+  background-color: #d4f4dd;
+  color: #34a853;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+.status.pending {
+  background-color: #fde8c8;
+  color: #fbbc05;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+.add-money {
+  background-color: #00b4d8;
+  color: white;
+}
+
+.send-money {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.centered-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.form-section {
+  margin-top: 30px;
+}
+
+.form-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.form-card h3 {
+  text-align: center;
+}
+
+.form-input {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.submit-btn {
+  background-color: #00b4d8;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  z-index: 9999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0.95;
+  transition: all 0.5s ease;
+}
+
+.toast.success {
+  background-color: #28a745;
+}
+
+.toast.error {
+  background-color: #dc3545;
+}

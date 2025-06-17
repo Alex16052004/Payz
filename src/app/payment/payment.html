@@ -1,0 +1,41 @@
+<form ngForm="payment" (ngSubmit)="onPayment(payment)" class="payment-form">
+  <h2>Send Payment</h2>
+
+  <div class="form-group">
+    <label for="phone">Phone Number</label>
+    <input
+      type="tel"
+      id="phone"
+      name="receiverPhoneNumber"
+      placeholder="Enter phone number"
+      [(ngModel)]="payment.receiverPhoneNumber"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="amount">Amount (₹)</label>
+    <input
+      type="number"
+      id="amount"
+      name="amount"
+      placeholder="Enter amount"
+      [(ngModel)]="payment.amount"
+      required
+    />
+  </div>
+
+  <button type="submit" class="send-btn">Send</button>
+</form>
+
+<label for="users" class="select-label">Select User:</label>
+<select
+  id="users"
+  [(ngModel)]="payment.receiverPhoneNumber"
+  class="custom-select"
+>
+  <option value="" disabled selected hidden>Select a user</option>
+  <option *ngFor="let data of userlist" [value]="data.phoneNumber">
+    {{ data.username }} {{ data.phoneNumber }}
+  </option>
+</select>
