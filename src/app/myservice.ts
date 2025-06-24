@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Myservice {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+
+  transactionUpdated = new Subject<void>();
 
   Signup(data: signupmodel): Observable<any> {
     return this.http.post<any>(
@@ -36,7 +38,7 @@ export class Myservice {
     );
   }
 
-  balance(phoneNumber:string): Observable<any> {
+  balance(phoneNumber: string): Observable<any> {
     return this.http.get<any>(`https://skytm-api.azurewebsites.net/api/Users/balance?phoneNumber=${phoneNumber}`);
   }
 
@@ -44,9 +46,19 @@ export class Myservice {
     return this.http.get<TransactionResponse>(`https://skytm-api.azurewebsites.net/api/Transactions/history?phoneNumber=${phoneNumber}`);
   }
 
-  getUserlist():Observable<any> {
+  getUserlist(): Observable<any> {
     return this.http.get<any>('https://skytm-api.azurewebsites.net/api/Users/basic-list')
   }
+
+  DeleteTransactionById(tid: number): Observable<any> {
+    return this.http.delete<any>(`https://skytm-api.azurewebsites.net/api/Transactions/DeleteTransectionById?tid=${tid}`)
+  }
+
+
+  DeleteTransaction(phoneNumber: string): Observable<any> {
+    return this.http.delete<any>(`https://skytm-api.azurewebsites.net/api/Transactions/history?phoneNumber=${phoneNumber}`)
+  }
+
 }
 export class signupmodel {
   username!: string;
@@ -63,15 +75,15 @@ export class loginmodel {
 
 export class Add {
   phoneNumber!: string;
-  amount!:number;
+  amount!: number;
 }
 
-export class paymentModel {;
+export class paymentModel {
+  senderPhoneNumber!: string;
   receiverPhoneNumber!: string;
-  amount!: number;
-  phoneNumber: any;
+  amount!:0;
 }
- 
+
 export interface Transaction {
   transactionId: number;
   userId: number;

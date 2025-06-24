@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Myservice, Transaction } from '../myservice';
-import { Router } from '@angular/router';
+import { RouterOutlet,Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule,RouterOutlet],
   providers: [Myservice],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
@@ -14,12 +14,12 @@ import { Router } from '@angular/router';
 export class Dashboard {
   userlist: any;
 
-  constructor(private myservice: Myservice,private router: Router) {}
+  constructor(private myservice: Myservice, private router: Router) { }
 
   activeForm: string = 'dashboard';
   userPhoneNumber: any;
 
- 
+
   currentBalance: string = " ";
 
   transactions: Transaction[] = [];
@@ -44,8 +44,12 @@ export class Dashboard {
     this.userPhoneNumber = sessionStorage.getItem("number");
     this.Balance();
     this.loadTransactions();
-  }
 
+    this.myservice.transactionUpdated.subscribe(() => {
+      this.loadTransactions();
+      this.Balance();
+    })
+  }
 
   Balance() {
     this.myservice.balance(this.userPhoneNumber).subscribe(
@@ -80,5 +84,25 @@ export class Dashboard {
     this.lastUpdatedTime = new Date();
   }
 
- 
+  delbyid(tid: number) {
+    this.myservice.DeleteTransactionById(tid).subscribe(data => {
+      this.showToast("Transaction deleted Successfully!", 'success');
+      this.loadTransactions();
+    }, err => {
+      this.showToast('Failed to delete transaction.', 'error')
+    });
+  }
+
+  deltran() {
+    this.myservice.DeleteTransaction(this.userPhoneNumber).subscribe(data => {
+      this.showToast("Transaction deleted Successfully!", 'success');
+      this.loadTransactions();
+    }, err => {
+      this.showToast('Failed to delete transaction.', 'error')
+    })
+
+  }
+
+
+
 }

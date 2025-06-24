@@ -1,28 +1,3 @@
-<div class="dashboard-container">
-  <div class="sidebar">
-    <div class="logo">Payz</div>
-    <nav>
-      <ul>
-        <li [class.active]="activeForm==='dashboard'" (click)="showDashboard()">
-          <i class="icon-home"></i> Dashboard
-        </li>
-        <li><i class="icon-transactions"></i> Transactions</li>
-        <li><i class="icon-settings"></i> Settings</li>
-      </ul>
-    </nav>
-    <div class="action-buttons">
-      <button class="add-money" (click)="showAddMoney()">Add Money</button>
-      <button class="payment" (click)="showSendMoney()">Send Money</button>
-    </div>
-    <div class="profile">
-      <div class="avatar">AT</div>
-      <div class="user-info">
-        <div class="name">Alex Tigga</div>
-        <div class="account-type">Premium Account</div>
-      </div>
-    </div>
-  </div>
-
   <div class="main-content">
     <div *ngIf="activeForm === 'dashboard'">
       <div class="header">
@@ -45,7 +20,7 @@
       <div class="transaction-history">
         <div class="history-header">
           <h3>Transaction History</h3>
-          <!-- <a href="#">View All</a> -->
+          <button (click)="deltran()">delete all transaction</button>
         </div>
         <div class="transaction-scroll">
           <div class="transaction-item" *ngFor="let txn of transactions">
@@ -75,13 +50,16 @@
                 {{ txn.transactionType === 'Debit' ? '-' : '+' }}₹{{
                 txn.transferAmount }}
               </span>
-              <!-- <span class="status">{{ txn.transactionType }}</span> -->
+              <button (click)="delbyid(txn.transactionId)">delete</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+<div>
+  <router-outlet></router-outlet>
 </div>
 
 <div class="toast" *ngIf="toastMessage" [ngClass]="toastType">

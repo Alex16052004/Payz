@@ -1,2 +1,6 @@
 <app-login *ngIf="!isLoggedin" (loginEvent)="received($event)"></app-login>
-<router-outlet *ngIf="isLoggedin"></router-outlet>
+
+<div *ngIf="isLoggedin">
+    <app-sidebar></app-sidebar>
+</div>
+

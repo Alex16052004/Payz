@@ -4,6 +4,7 @@ import { Signup } from './signup/signup';
 import { AddMoney } from './add-money/add-money';
 import { Payment } from './payment/payment';
 import { Dashboard } from './dashboard/dashboard';
+import { Sidebar } from './sidebar/sidebar';
 
 export const routes: Routes = [
     { path: "", redirectTo:'/login', pathMatch: 'full'},
@@ -11,5 +12,6 @@ export const routes: Routes = [
     { path: "signup", component: Signup},
     { path: "add-money", component: AddMoney},
     { path: "payment", component: Payment},
-    { path: "dashboard", component: Dashboard}
+    { path: "dashboard", component: Dashboard},
+    { path: "sidebar", component: Sidebar}
 ];

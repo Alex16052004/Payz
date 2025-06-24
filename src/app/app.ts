@@ -1,19 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { Signup } from './signup/signup';
 import { Login } from './login/login';
 import { AddMoney } from './add-money/add-money';
 import { Payment } from './payment/payment';
+import { Sidebar } from "./sidebar/sidebar";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, FormsModule, Signup, Login, AddMoney, Payment],
+  imports: [RouterOutlet, CommonModule, FormsModule, Signup, Login, AddMoney, Payment, Sidebar],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App implements OnInit{
+
+  constructor(private router: Router) {}
+
   protected title = 'payz';
   isLoggedin=false;
   ngOnInit(): void {
@@ -23,4 +27,7 @@ export class App implements OnInit{
   received(event: any) {
     this.isLoggedin = event;
   }
+
+
+
 }

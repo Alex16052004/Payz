@@ -1,0 +1,28 @@
+<div class="dashboard-container">
+  <div class="sidebar">
+    <div class="logo">Payz</div>
+    <nav>
+      <ul>
+        <li (click)="navigateTo('dashboard')">
+          <i class="icon-home"></i> Dashboard
+        </li>
+      </ul>
+    </nav>
+    <div class="action-buttons">
+      <button class="add-money" (click)="navigateTo('add-money')">Add Money</button>
+      <button class="payment" (click)="navigateTo('payment')">Send Money</button>
+      <button (click)="logout()">logout</button>
+    </div>
+    <div class="profile">
+      <div class="avatar">AT</div>
+      <div class="user-info">
+        <div class="name">Alex Tigga</div>
+        <div class="account-type">Premium Account</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

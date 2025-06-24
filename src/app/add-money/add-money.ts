@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Add, Myservice } from '../myservice';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-money',
@@ -11,7 +12,7 @@ import { Add, Myservice } from '../myservice';
   styleUrl: './add-money.css',
 })
 export class AddMoney {
-  constructor(private myservice: Myservice) {}
+  constructor(private myservice: Myservice,private router: Router) {}
 
   userPhonenumber: any;
   addMoneyModel = new Add();
@@ -21,6 +22,7 @@ export class AddMoney {
     this.addMoneyModel.phoneNumber = this.userPhonenumber;
     this.myservice.addMoney(this.addMoneyModel).subscribe((data) => {
       alert(data.response);
+      this.router.navigate(['/sidebar']);
     });
   }
 }
