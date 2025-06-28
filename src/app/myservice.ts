@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class Myservice {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   transactionUpdated = new Subject<void>();
 
@@ -39,26 +39,34 @@ export class Myservice {
   }
 
   balance(phoneNumber: string): Observable<any> {
-    return this.http.get<any>(`https://skytm-api.azurewebsites.net/api/Users/balance?phoneNumber=${phoneNumber}`);
+    return this.http.get<any>(
+      `https://skytm-api.azurewebsites.net/api/Users/balance?phoneNumber=${phoneNumber}`
+    );
   }
 
   getTransactions(phoneNumber: string): Observable<TransactionResponse> {
-    return this.http.get<TransactionResponse>(`https://skytm-api.azurewebsites.net/api/Transactions/history?phoneNumber=${phoneNumber}`);
+    return this.http.get<TransactionResponse>(
+      `https://skytm-api.azurewebsites.net/api/Transactions/history?phoneNumber=${phoneNumber}`
+    );
   }
 
   getUserlist(): Observable<any> {
-    return this.http.get<any>('https://skytm-api.azurewebsites.net/api/Users/basic-list')
+    return this.http.get<any>(
+      'https://skytm-api.azurewebsites.net/api/Users/basic-list'
+    );
   }
 
   DeleteTransactionById(tid: number): Observable<any> {
-    return this.http.delete<any>(`https://skytm-api.azurewebsites.net/api/Transactions/DeleteTransectionById?tid=${tid}`)
+    return this.http.delete<any>(
+      `https://skytm-api.azurewebsites.net/api/Transactions/DeleteTransectionById?tid=${tid}`
+    );
   }
-
 
   DeleteTransaction(phoneNumber: string): Observable<any> {
-    return this.http.delete<any>(`https://skytm-api.azurewebsites.net/api/Transactions/history?phoneNumber=${phoneNumber}`)
+    return this.http.delete<any>(
+      `https://skytm-api.azurewebsites.net/api/Transactions/history?phoneNumber=${phoneNumber}`
+    );
   }
-
 }
 export class signupmodel {
   username!: string;
@@ -81,7 +89,7 @@ export class Add {
 export class paymentModel {
   senderPhoneNumber!: string;
   receiverPhoneNumber!: string;
-  amount!:0;
+  amount!: 0;
 }
 
 export interface Transaction {
