@@ -12,59 +12,59 @@ export class Myservice {
 
   Signup(data: signupmodel): Observable<any> {
     return this.http.post<any>(
-      'https://skytm-api.azurewebsites.net/api/Auth/signup',
+      'https://localhost:7213/api/Auth/Register',
       data
     );
   }
 
   Login(data: loginmodel): Observable<any> {
     return this.http.post<any>(
-      'https://skytm-api.azurewebsites.net/api/Auth/login',
+      'https://localhost:7213/api/Auth/Login',
       data
     );
   }
 
   addMoney(data: Add): Observable<any> {
     return this.http.post<any>(
-      'https://skytm-api.azurewebsites.net/api/Wallet/add',
+      'https://localhost:7213/api/Wallet/add',
       data
     );
   }
 
   Payment(data: paymentModel): Observable<any> {
     return this.http.post<any>(
-      'https://skytm-api.azurewebsites.net/api/Transactions/pay',
+      'https://localhost:7213/api/Transaction/pay',
       data
     );
   }
 
   balance(phoneNumber: string): Observable<any> {
     return this.http.get<any>(
-      `https://skytm-api.azurewebsites.net/api/Users/balance?phoneNumber=${phoneNumber}`
+      `https://localhost:7213/api/User/balance?phoneNumber=${phoneNumber}`
     );
   }
 
   getTransactions(phoneNumber: string): Observable<TransactionResponse> {
     return this.http.get<TransactionResponse>(
-      `https://skytm-api.azurewebsites.net/api/Transactions/history?phoneNumber=${phoneNumber}`
+      `https://localhost:7213/api/Transaction/history?phoneNumber=${phoneNumber}`
     );
   }
 
   getUserlist(): Observable<any> {
     return this.http.get<any>(
-      'https://skytm-api.azurewebsites.net/api/Users/basic-list'
+      'https://localhost:7213/api/User/usersList'
     );
   }
 
   DeleteTransactionById(tid: number): Observable<any> {
     return this.http.delete<any>(
-      `https://skytm-api.azurewebsites.net/api/Transactions/DeleteTransectionById?tid=${tid}`
+      `https://localhost:7213/api/Transaction/DeleteTransactionHistoryById?tid=${tid}`
     );
   }
 
   DeleteTransaction(phoneNumber: string): Observable<any> {
     return this.http.delete<any>(
-      `https://skytm-api.azurewebsites.net/api/Transactions/history?phoneNumber=${phoneNumber}`
+      `https://localhost:7213/api/Transaction/history?phoneNumber=${phoneNumber}`
     );
   }
 }

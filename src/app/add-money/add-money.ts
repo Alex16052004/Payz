@@ -22,7 +22,7 @@ export class AddMoney {
     this.addMoneyModel.phoneNumber = this.userPhonenumber;
     this.myservice.addMoney(this.addMoneyModel).subscribe((data) => {
       alert(data.response);
-      this.router.navigate(['/sidebar']);
+      this.router.navigate(['/dashboard']);
     });
   }
 }

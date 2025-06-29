@@ -33,7 +33,7 @@ export class Login {
     this.myservice.Login(form).subscribe(data=>{
       this.Data = data.result
       alert(data.response);
-      if(data.response=='Login Successfully !!')
+      if(data.response=='Login Successfully!!')
       {
         this.send(true);
         sessionStorage.setItem("isLoggedin","true")

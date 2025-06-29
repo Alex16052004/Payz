@@ -20,7 +20,7 @@
       <div class="transaction-history">
         <div class="history-header">
           <h3>Transaction History</h3>
-          <button (click)="deltran()">delete all transaction</button>
+          <button class="delete-btn" (click)="deltran()">delete all transaction</button>
         </div>
         <div class="transaction-scroll">
           <div class="transaction-item" *ngFor="let txn of transactions">
@@ -50,7 +50,7 @@
                 {{ txn.transactionType === 'Debit' ? '-' : '+' }}₹{{
                 txn.transferAmount }}
               </span>
-              <button (click)="delbyid(txn.transactionId)">delete</button>
+              <button class="delete-btn-single" (click)="delbyid(txn.transactionId)">delete</button>
             </div>
           </div>
         </div>
